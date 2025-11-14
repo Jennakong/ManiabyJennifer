@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <title>MANIA by Jennifer – Tribe & Trends</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="MANIA by Jennifer – Tribe & Trends collection. Afro-fusion silhouettes, modern tailoring, designed in small capsules." />
+  <meta name="description" content="MANIA by Jennifer – Tribe & Trends collection. Afro-fusion silhouettes, modern tailoring, exclusive pieces designed in intentional capsules." />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -15,9 +15,10 @@
       --soft:#f7f4f0;
       --muted:#6b6b6b;
       --line:#ded7cf;
-      --accent:#c96a3a; /* soft burnt orange for tiny details, can change */
+      --accent:#c96a3a; /* soft burnt orange, optional accent */
     }
     *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;}
     body{
       font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       color:var(--ink);
@@ -27,10 +28,37 @@
     a{text-decoration:none;color:inherit}
     img{max-width:100%;display:block}
 
+    /* ANNOUNCEMENT BAR WITH COUNTDOWN */
+    .announce{
+      background:#111;
+      color:#fdfdfd;
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      overflow:hidden;
+      border-bottom:1px solid #222;
+    }
+    .announce-inner{
+      max-width:1100px;
+      margin:0 auto;
+      padding:8px 18px;
+      white-space:nowrap;
+      display:flex;
+      gap:40px;
+      animation:announce-scroll 22s linear infinite;
+    }
+    .announce span.label{opacity:.8;}
+    .announce span.count{font-weight:600;}
+
+    @keyframes announce-scroll{
+      0%{transform:translateX(0);}
+      100%{transform:translateX(-50%);}
+    }
+
     /* NAV */
     .nav{
       position:sticky;top:0;z-index:10;
-      background:#ffffffd9;
+      background:#ffffffeb;
       backdrop-filter:blur(12px);
       border-bottom:1px solid var(--line);
     }
@@ -51,8 +79,17 @@
       text-transform:uppercase;
       letter-spacing:.15em;
     }
-    .nav-links a{color:var(--muted);}
+    .nav-links a{color:var(--muted);position:relative;}
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;bottom:-4px;
+      width:0;height:1px;
+      background:var(--ink);
+      transition:width .2s ease-out;
+    }
     .nav-links a:hover{color:var(--ink);}
+    .nav-links a:hover::after{width:100%;}
 
     /* HERO */
     .hero{
@@ -98,22 +135,32 @@
       letter-spacing:.18em;
       background:#111;
       color:#fdfdfd;
+      transition:background .2s ease, color .2s ease, transform .15s ease;
     }
     .btn-outline{
       background:transparent;
       color:var(--ink);
     }
-    .btn:hover{opacity:.9;}
+    .btn:hover{
+      opacity:.9;
+      transform:translateY(-1px);
+    }
 
     .hero-img-wrap{
       border:1px solid var(--line);
       background:#e9e3dc;
       overflow:hidden;
+      position:relative;
     }
     .hero-img-wrap img{
       width:100%;
       height:100%;
       object-fit:cover;
+      transform:scale(1.02);
+      transition:transform .7s ease;
+    }
+    .hero-img-wrap:hover img{
+      transform:scale(1.05);
     }
 
     /* STORY */
@@ -171,6 +218,11 @@
     .product-card{
       border-top:1px solid var(--line);
       padding-top:18px;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .product-card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 24px rgba(0,0,0,0.05);
     }
     .product-img{
       aspect-ratio:3/4;
@@ -181,6 +233,10 @@
     }
     .product-img img{
       width:100%;height:100%;object-fit:cover;
+      transition:transform .6s ease;
+    }
+    .product-card:hover .product-img img{
+      transform:scale(1.04);
     }
     .product-tag{
       text-transform:uppercase;
@@ -264,10 +320,28 @@
       .hero-inner{
         grid-template-columns:1fr;
       }
+      .announce-inner{
+        animation:none;
+        white-space:normal;
+        justify-content:center;
+        text-align:center;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- ANNOUNCEMENT BAR WITH COUNTDOWN -->
+  <div class="announce">
+    <div class="announce-inner">
+      <span class="label">
+        10 Years of MANIA by Jennifer – Anniversary Capsule arriving December 2025
+      </span>
+      <span class="count" id="countdown">
+        Counting down…
+      </span>
+    </div>
+  </div>
 
   <!-- NAV -->
   <header class="nav">
@@ -309,20 +383,20 @@
     <p>
       Born from a love of fabric, form and the women who wear them, MANIA by Jennifer tells stories in stitches.
       Tribe &amp; Trends is a study in contrast – bold West African prints and textures, cut into clean,
-      city-ready lines. Every piece is made in small runs, styled to be worn, re-worn and remembered.
+      city-ready lines. Each design is created in intentionally exclusive runs, styled to be worn, re-worn and remembered.
     </p>
     <p>
-      From studio fittings to late–night sewing sessions, each garment has passed through Jennifer’s hands – measured,
-      pressed and finished with care. No loud logos. Just clothes that hold their own.
+      From studio fittings to late–night sewing sessions, every garment passes through Jennifer’s hands – measured,
+      pressed and finished with care. No loud logos. Just clothes that hold their own and feel like they were made for you.
     </p>
-    <span class="tagline">Designed in Manchester · Rooted in West Africa · Made to last</span>
+    <span class="tagline">Exclusive pieces · Rooted in West Africa · Designed in Manchester</span>
   </section>
 
   <!-- COLLECTION / PRODUCTS -->
   <main id="collection" class="products">
     <div class="products-header">
       <h3>Spotlight Pieces</h3>
-      <p>Capsule · Limited quantities · No mass restocks</p>
+      <p>Capsule · Exclusive releases · No mass restocks</p>
     </div>
 
     <div class="product-grid">
@@ -338,7 +412,7 @@
         <div class="product-note">
           Structured kimono jacket and tailored trouser in mixed Aso-Oke and Adire print – a nod to tradition with a sharp, modern line.
         </div>
-        <div class="product-meta">Available in limited sizes · Made to order on request</div>
+        <div class="product-meta">Exclusive to MANIA by Jennifer · Limited availability in select sizes.</div>
         <div class="product-actions">
           <a class="btn-ghost btn"
              href="mailto:akongjennifer@gmail.com?subject=Order%20Enquiry%20-%20ASO-ADIRE%20Set&body=Hi%20Jenn,%0D%0A%0DI'd%20love%20to%20order%20the%20ASO-ADIRE%20Set.%0D%0AColourway:%20%0D%0ASize:%20%0D%0AShipping%20city/country:%20%0D%0A%0D%0AThank%20you!">
@@ -361,7 +435,7 @@
         <div class="product-note">
           Flowing maxi skirt and cropped top in bold print, cut to sit high on the waist with a gentle flare through the hem.
         </div>
-        <div class="product-meta">Perfect for events, shoots and slow Sundays.</div>
+        <div class="product-meta">Statement piece for shoots, celebrations and slow Sundays.</div>
         <div class="product-actions">
           <a class="btn-ghost btn"
              href="mailto:akongjennifer@gmail.com?subject=Order%20Enquiry%20-%20YANGA%20Maxi%20Set&body=Hi%20Jenn,%0D%0A%0DI'd%20love%20to%20order%20the%20YANGA%20Maxi%20Set.%0D%0AColourway:%20%0D%0ASize:%20%0D%0AShipping%20city/country:%20%0D%0A%0D%0AThank%20you!">
@@ -382,9 +456,9 @@
         <div class="product-tag">Tribe &amp; Trends</div>
         <div class="product-name">OBA Luxe Kimono</div>
         <div class="product-note">
-          Long-line kimono with strong shoulders and generous sleeves, finished in statement print or solid with print facings.
+          Long-line kimono with strong shoulders and generous sleeves, finished in statement print or solid with printed facings.
         </div>
-        <div class="product-meta">Throw-on layer · One size with adjustable belt.</div>
+        <div class="product-meta">Signature throw-on layer · Exclusively released in this capsule.</div>
         <div class="product-actions">
           <a class="btn-ghost btn"
              href="mailto:akongjennifer@gmail.com?subject=Order%20Enquiry%20-%20OBA%20Luxe%20Kimono&body=Hi%20Jenn,%0D%0A%0DI'd%20love%20to%20order%20the%20OBA%20Luxe%20Kimono.%0D%0AColourway:%20%0D%0ASize:%20(if%20needed)%0D%0AShipping%20city/country:%20%0D%0A%0D%0AThank%20you!">
@@ -407,11 +481,10 @@
       <li>Browse the Tribe &amp; Trends spotlight pieces above.</li>
       <li>Click <strong>Request by Email</strong> or <strong>WhatsApp to Order</strong> on the piece you love.</li>
       <li>Share your preferred size, colourway and shipping city/country.</li>
-      <li>We’ll confirm availability, price and delivery timelines, then send payment details securely.</li>
+      <li>We’ll confirm availability, exclusive pricing and delivery timelines, then send payment details securely.</li>
     </ol>
     <p class="small">
-      All pieces are produced in small batches. Once a fabric is finished, it is rarely restocked.
-      This keeps each MANIA by Jennifer garment intentional and special.
+      Pieces from MANIA by Jennifer are released in exclusive capsules. Once a fabric or cut is retired, it rarely returns in the same way.
     </p>
   </section>
 
@@ -424,6 +497,31 @@
     <div>For custom orders and bridal, please email with the subject “Custom MANIA Piece”.</div>
     <div style="margin-top:6px;">&copy; 2025 MANIA by Jennifer. All rights reserved.</div>
   </footer>
+
+  <!-- COUNTDOWN SCRIPT -->
+  <script>
+    // Set your 10-year anniversary date here (adjust day if needed)
+    const targetDate = new Date("2025-12-01T00:00:00");
+
+    function updateCountdown(){
+      const now = new Date();
+      const diff = targetDate - now;
+      const el = document.getElementById("countdown");
+      if (!el) return;
+
+      if (diff <= 0){
+        el.textContent = "10 Year Anniversary Capsule has arrived.";
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+
+      el.textContent = `Countdown: ${days}d ${hours}h ${mins}m`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 60000); // update every minute
+  </script>
 
 </body>
 </html>
