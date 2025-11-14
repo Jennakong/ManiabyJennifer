@@ -28,7 +28,7 @@
     a{text-decoration:none;color:inherit}
     img{max-width:100%;display:block}
 
-    /* ANNOUNCEMENT BAR WITH COUNTDOWN */
+    /* ANNOUNCEMENT BAR WITH MULTIPLE MESSAGES + COUNTDOWN */
     .announce{
       background:#111;
       color:#fdfdfd;
@@ -42,13 +42,22 @@
       max-width:1100px;
       margin:0 auto;
       padding:8px 18px;
-      white-space:nowrap;
       display:flex;
       gap:40px;
-      animation:announce-scroll 22s linear infinite;
+      white-space:nowrap;
+      animation:announce-scroll 28s linear infinite;
+    }
+    .announce-item{
+      display:flex;
+      align-items:center;
+      gap:10px;
     }
     .announce span.label{opacity:.8;}
     .announce span.count{font-weight:600;}
+
+    .announce-inner:hover{
+      animation-play-state:paused;
+    }
 
     @keyframes announce-scroll{
       0%{transform:translateX(0);}
@@ -79,7 +88,10 @@
       text-transform:uppercase;
       letter-spacing:.15em;
     }
-    .nav-links a{color:var(--muted);position:relative;}
+    .nav-links a{
+      color:var(--muted);
+      position:relative;
+    }
     .nav-links a::after{
       content:"";
       position:absolute;
@@ -218,12 +230,24 @@
     .product-card{
       border-top:1px solid var(--line);
       padding-top:18px;
-      transition:transform .15s ease, box-shadow .15s ease;
+      transition:
+        opacity .6s ease-out,
+        transform .6s ease-out,
+        box-shadow .15s ease;
+      opacity:0;
+      transform:translateY(16px);
     }
-    .product-card:hover{
+    /* When visible in viewport */
+    .product-card.is-visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+    /* Hover state once visible */
+    .product-card.is-visible:hover{
       transform:translateY(-3px);
       box-shadow:0 10px 24px rgba(0,0,0,0.05);
     }
+
     .product-img{
       aspect-ratio:3/4;
       border:1px solid var(--line);
@@ -320,26 +344,60 @@
       .hero-inner{
         grid-template-columns:1fr;
       }
+      .announce{
+        font-size:0.7rem;
+      }
       .announce-inner{
-        animation:none;
-        white-space:normal;
-        justify-content:center;
-        text-align:center;
+        gap:16px;
+        padding:8px 12px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ANNOUNCEMENT BAR WITH COUNTDOWN -->
+  <!-- ANNOUNCEMENT BAR WITH MULTIPLE MESSAGES -->
   <div class="announce">
     <div class="announce-inner">
-      <span class="label">
-        10 Years of MANIA by Jennifer – Anniversary Capsule arriving December 2025
-      </span>
-      <span class="count" id="countdown">
-        Counting down…
-      </span>
+      <!-- Item 1: Anniversary + countdown -->
+      <div class="announce-item">
+        <span class="label">
+          10 Years of MANIA by Jennifer – Anniversary Capsule · December 2025
+        </span>
+        <span class="count" id="countdown">
+          Counting down…
+        </span>
+      </div>
+
+      <!-- Item 2: Free shipping -->
+      <div class="announce-item">
+        <span class="label">
+          Free shipping for orders over £150
+        </span>
+      </div>
+
+      <!-- Item 3: Exclusivity message -->
+      <div class="announce-item">
+        <span class="label">
+          Exclusive capsules · No mass restocks · Made with intention
+        </span>
+      </div>
+
+      <!-- Duplicate items for smoother loop -->
+      <div class="announce-item">
+        <span class="label">
+          10 Years of MANIA by Jennifer – Anniversary · December 2025
+        </span>
+        <span class="count">
+          Join the celebration
+        </span>
+      </div>
+
+      <div class="announce-item">
+        <span class="label">
+          Free shipping for orders over £150
+        </span>
+      </div>
     </div>
   </div>
 
@@ -498,7 +556,7 @@
     <div style="margin-top:6px;">&copy; 2025 MANIA by Jennifer. All rights reserved.</div>
   </footer>
 
-  <!-- COUNTDOWN SCRIPT -->
+  <!-- INTERACTIVITY: COUNTDOWN, ANNOUNCEMENT TOUCH PAUSE, SCROLL REVEAL -->
   <script>
     // Set your 10-year anniversary date here (adjust day if needed)
     const targetDate = new Date("2025-12-01T00:00:00");
@@ -519,8 +577,43 @@
 
       el.textContent = `Countdown: ${days}d ${hours}h ${mins}m`;
     }
+
+    // Run countdown immediately and every minute
     updateCountdown();
-    setInterval(updateCountdown, 60000); // update every minute
+    setInterval(updateCountdown, 60000);
+
+    document.addEventListener('DOMContentLoaded', function(){
+      const bar = document.querySelector('.announce-inner');
+      if(bar){
+        // Touch events for mobile - pause scroll
+        function pauseScroll(){ bar.style.animationPlayState = 'paused'; }
+        function resumeScroll(){ bar.style.animationPlayState = 'running'; }
+
+        bar.addEventListener('touchstart', pauseScroll);
+        bar.addEventListener('touchend', resumeScroll);
+        bar.addEventListener('touchcancel', resumeScroll);
+      }
+
+      // Fade-in on scroll for product cards
+      const cards = document.querySelectorAll('.product-card');
+      if('IntersectionObserver' in window && cards.length){
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if(entry.isIntersecting){
+              entry.target.classList.add('is-visible');
+              obs.unobserve(entry.target); // only animate once
+            }
+          });
+        }, {
+          threshold:0.18
+        });
+
+        cards.forEach(card => observer.observe(card));
+      } else {
+        // Fallback: make them all visible if IO not supported
+        cards.forEach(card => card.classList.add('is-visible'));
+      }
+    });
   </script>
 
 </body>
