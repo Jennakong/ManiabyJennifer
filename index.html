@@ -2,301 +2,428 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <title>MANIA by Jennifer – Tribe & Trends</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MANIA by Jennifer — Season Capsule</title>
+  <meta name="description" content="MANIA by Jennifer – Tribe & Trends collection. Afro-fusion silhouettes, modern tailoring, designed in small capsules." />
+
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons (for footer socials) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --green:#0f2e1f;
-      --gold:#C6A664;
-      --ink:#111;
-      --soft:#f7f6f3;
+      --ink:#111111;
+      --soft:#f7f4f0;
+      --muted:#6b6b6b;
+      --line:#ded7cf;
+      --accent:#c96a3a; /* soft burnt orange for tiny details, can change */
     }
-    html,body{font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;color:var(--ink);background:#fff}
-    h1,h2,h3,h4{font-family:"Playfair Display", serif; letter-spacing: .5px}
-    a{color:inherit;text-decoration:none}
-    .btn-mania{background:var(--green); color:var(--gold); border:0; border-radius:0; padding:.8rem 1.2rem; letter-spacing:.6px; text-transform:uppercase; font-weight:600}
-    .btn-mania:hover{opacity:.9; color:#fff}
-    .nav-border{border-top:1px solid #e9e7e2;border-bottom:1px solid #e9e7e2}
-    .brandbar{padding:.9rem 0}
-    .brandbar img{height:36px}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:#ffffff;
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
+    /* NAV */
+    .nav{
+      position:sticky;top:0;z-index:10;
+      background:#ffffffd9;
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      max-width:1100px;margin:0 auto;
+      padding:14px 18px;
+      display:flex;align-items:center;justify-content:space-between;gap:24px;
+    }
+    .nav-brand{
+      font-family:'Playfair Display', serif;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:.9rem;
+    }
+    .nav-links{
+      display:flex;gap:18px;
+      font-size:.85rem;
+      text-transform:uppercase;
+      letter-spacing:.15em;
+    }
+    .nav-links a{color:var(--muted);}
+    .nav-links a:hover{color:var(--ink);}
+
+    /* HERO */
     .hero{
       background:var(--soft);
-      border-bottom:1px solid #e9e7e2;
+      border-bottom:1px solid var(--line);
     }
-    .hero-wrap{max-width:1200px;margin:auto;padding:48px 20px 32px}
-    .hero-kicker{letter-spacing:.2em;text-transform:uppercase;color:#777;font-size:.8rem}
-    .hero h1{font-size:clamp(2rem, 3vw + 1rem, 3.25rem); margin:.3rem 0 1rem}
-    .hero p{max-width:720px}
-    .hero-img{width:100%; height:auto; object-fit:cover; border:1px solid #e9e7e2}
+    .hero-inner{
+      max-width:1100px;margin:0 auto;
+      padding:40px 18px 30px;
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(0,1.1fr);
+      gap:32px;
+      align-items:center;
+    }
+    .hero-kicker{
+      text-transform:uppercase;
+      letter-spacing:.25em;
+      font-size:.75rem;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+    .hero h1{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2rem, 3.4vw, 3rem);
+      letter-spacing:.03em;
+      margin-bottom:14px;
+    }
+    .hero-copy{
+      font-size:.98rem;
+      color:#444;
+      max-width:460px;
+      margin-bottom:18px;
+    }
+    .hero-buttons{
+      display:flex;flex-wrap:wrap;gap:10px;
+    }
+    .btn{
+      padding:0.75rem 1.4rem;
+      border-radius:0;
+      border:1px solid var(--ink);
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      background:#111;
+      color:#fdfdfd;
+    }
+    .btn-outline{
+      background:transparent;
+      color:var(--ink);
+    }
+    .btn:hover{opacity:.9;}
 
-    .info-strips .strip{padding:18px 0;border-bottom:1px solid #e9e7e2; text-align:center}
-    .info-strips .strip h6{letter-spacing:.2em;text-transform:uppercase;font-size:.85rem;margin-bottom:6px}
-    .info-strips .strip p{color:#585858; margin:0}
+    .hero-img-wrap{
+      border:1px solid var(--line);
+      background:#e9e3dc;
+      overflow:hidden;
+    }
+    .hero-img-wrap img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
 
-    .products{max-width:1200px;margin:auto;padding:48px 20px}
-    .product-card{border-top:1px solid #e9e7e2; padding-top:36px; margin-top:36px}
-    .product-title{font-size:clamp(1.4rem, 2vw + .6rem, 2rem)}
-    .price{font-weight:600; letter-spacing:.04em}
-    .thumb{width:100%; border:1px solid #e9e7e2}
-    .swatch{border:1px solid #d5d1c9; background:#fff; padding:.35rem .6rem; font-size:.9rem; cursor:pointer; margin-right:.5rem}
-    .swatch.active, .swatch:hover{border-color:var(--green)}
-    .size-pill{border:1px solid #d5d1c9; padding:.35rem .6rem; margin-right:.4rem; cursor:pointer}
-    .size-pill.active{background:var(--ink); color:#fff; border-color:var(--ink)}
-    .fine{color:#6a6a6a; font-size:.92rem}
+    /* STORY */
+    .story{
+      max-width:900px;margin:42px auto 16px;
+      padding:0 18px 8px;
+      border-bottom:1px solid var(--line);
+    }
+    .story h2{
+      font-family:'Playfair Display',serif;
+      font-size:1.3rem;
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      margin-bottom:10px;
+    }
+    .story p{
+      color:#444;
+      font-size:.96rem;
+      margin-bottom:10px;
+    }
+    .story span.tagline{
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      font-size:.72rem;
+      color:var(--muted);
+    }
 
-    .newsletter{background:#fff;border-top:1px solid #e9e7e2;border-bottom:1px solid #e9e7e2;padding:42px 0}
-    .newsletter h5{letter-spacing:.2em;text-transform:uppercase;text-align:center}
-    .newsletter .form-control{border-radius:0;border-color:#d8d4cc}
-    .newsletter .btn{border-radius:0}
+    /* PRODUCTS */
+    .products{
+      max-width:1100px;margin:26px auto 40px;
+      padding:0 18px;
+    }
+    .products-header{
+      display:flex;justify-content:space-between;align-items:flex-end;gap:12px;
+      margin-bottom:18px;
+    }
+    .products-header h3{
+      font-family:'Playfair Display',serif;
+      font-size:1.4rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .products-header p{
+      font-size:.85rem;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.18em;
+    }
 
-    /* Footer (your exact spec) */
-    .footer-green {background-color: #0f2e1f;color: #fff;}
-    .footer-icon {margin: 0 12px;color: #C6A664;font-size: 1.6rem;transition: color 0.3s;}
-    .footer-icon:hover {color: #fff;}
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:26px;
+    }
+    .product-card{
+      border-top:1px solid var(--line);
+      padding-top:18px;
+    }
+    .product-img{
+      aspect-ratio:3/4;
+      border:1px solid var(--line);
+      background:#f1ebe3;
+      margin-bottom:12px;
+      overflow:hidden;
+    }
+    .product-img img{
+      width:100%;height:100%;object-fit:cover;
+    }
+    .product-tag{
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.72rem;
+      color:var(--muted);
+      margin-bottom:4px;
+    }
+    .product-name{
+      font-family:'Playfair Display',serif;
+      font-size:1.1rem;
+      margin-bottom:4px;
+    }
+    .product-note{
+      font-size:.9rem;
+      color:#555;
+      margin-bottom:10px;
+    }
+    .product-meta{
+      font-size:.8rem;
+      color:var(--muted);
+      margin-bottom:12px;
+    }
+    .product-actions{
+      display:flex;flex-wrap:wrap;gap:8px;
+    }
+    .btn-ghost{
+      background:transparent;
+      border:1px solid var(--ink);
+      color:var(--ink);
+    }
 
-    /* Small text links area (BBX-style) */
-    .bottom-links{max-width:980px;margin:0 auto;padding:26px 20px 36px;color:#444}
-    .bottom-links a{display:block;margin:6px 0;color:#444}
-    .country-select{border:1px solid #d8d4cc;border-radius:0;background:#fff;padding:.6rem .8rem}
+    /* HOW TO SHOP */
+    .how-to{
+      max-width:900px;margin:18px auto 40px;
+      padding:24px 18px;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#faf7f3;
+    }
+    .how-to h4{
+      font-family:'Playfair Display',serif;
+      font-size:1.1rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+    .how-to ol{
+      padding-left:18px;
+      font-size:.93rem;
+      color:#444;
+    }
+    .how-to li{margin-bottom:6px;}
+    .how-to p.small{
+      font-size:.78rem;
+      color:var(--muted);
+      margin-top:8px;
+    }
+
+    /* CONTACT / FOOTER */
+    footer{
+      border-top:1px solid var(--line);
+      padding:18px;
+      text-align:center;
+      font-size:.8rem;
+      color:var(--muted);
+      background:#fff;
+    }
+    footer .social{
+      margin-bottom:8px;
+    }
+    footer .social a{
+      margin:0 6px;
+      font-size:.85rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+    }
+
+    /* Responsive */
+    @media (max-width:768px){
+      .hero-inner{
+        grid-template-columns:1fr;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Top message -->
-  <div class="text-center py-2" style="font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;color:#555;">
-    New Autumn Styles Coming Soon
-  </div>
-
-  <!-- Centered logo nav -->
-  <div class="nav-border">
-    <div class="container brandbar d-flex align-items-center justify-content-between">
-      <div class="d-flex align-items-center gap-3">
-        <a href="#" class="d-inline-flex align-items-center gap-2"><i class="bi bi-list" style="font-size:1.2rem"></i><span class="d-none d-md-inline">Menu</span></a>
-      </div>
-      <a href="#" class="mx-auto"><img src="logo.png" alt="MANIA by Jennifer"></a>
-      <div class="d-flex align-items-center gap-3">
-        <a href="#"><i class="bi bi-search" style="font-size:1.2rem"></i></a>
-        <a href="#"><i class="bi bi-heart" style="font-size:1.2rem"></i></a>
-        <a href="#"><i class="bi bi-bag" style="font-size:1.2rem"></i></a>
-      </div>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">MANIA by Jennifer</div>
+      <nav class="nav-links">
+        <a href="#collection">Collection</a>
+        <a href="#story">Story</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <!-- HERO -->
+  <!-- HERO SPOTLIGHT -->
   <section class="hero">
-    <div class="hero-wrap">
-      <div class="row g-4 align-items-center">
-        <div class="col-lg-6">
-          <div class="hero-kicker">Season Capsule — Limited Run</div>
-          <h1>Afro-Fusion, Tailored for the City</h1>
-          <p>Three looks. Two colourways each. Intentionally designed so you get more from every wear — dress up, mix, layer, repeat.</p>
-          <a href="#products" class="btn btn-mania mt-2">Shop the Capsule</a>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-kicker">Tribe &amp; Trends — Capsule</div>
+        <h1>Afro-Fusion Silhouettes for the Modern City Woman</h1>
+        <p class="hero-copy">
+          The Tribe &amp; Trends collection reimagines West African prints through clean cuts, tailored lines and
+          intentional detailing. Designed to move from studio to street, every piece carries a story and a silhouette.
+        </p>
+        <div class="hero-buttons">
+          <a href="#collection" class="btn">Explore the Capsule</a>
+          <a href="#how-to-shop" class="btn btn-outline">How to Shop</a>
         </div>
-        <div class="col-lg-6">
-          <img src="images/hero.jpg" class="hero-img" alt="Season look">
-        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <!-- Replace with your hero image -->
+        <img src="images/tribe-hero.jpg" alt="Tribe &amp; Trends collection by MANIA by Jennifer">
       </div>
     </div>
   </section>
 
-  <!-- Info strips (BBX-style) -->
-  <div class="info-strips">
-    <div class="strip">
-      <h6>Luxury Multi-Wear Designs</h6>
-      <p>Intentionally crafted to get more from every buy</p>
+  <!-- STORY -->
+  <section id="story" class="story">
+    <h2>Tribe &amp; Trends</h2>
+    <p>
+      Born from a love of fabric, form and the women who wear them, MANIA by Jennifer tells stories in stitches.
+      Tribe &amp; Trends is a study in contrast – bold West African prints and textures, cut into clean,
+      city-ready lines. Every piece is made in small runs, styled to be worn, re-worn and remembered.
+    </p>
+    <p>
+      From studio fittings to late–night sewing sessions, each garment has passed through Jennifer’s hands – measured,
+      pressed and finished with care. No loud logos. Just clothes that hold their own.
+    </p>
+    <span class="tagline">Designed in Manchester · Rooted in West Africa · Made to last</span>
+  </section>
+
+  <!-- COLLECTION / PRODUCTS -->
+  <main id="collection" class="products">
+    <div class="products-header">
+      <h3>Spotlight Pieces</h3>
+      <p>Capsule · Limited quantities · No mass restocks</p>
     </div>
-    <div class="strip">
-      <h6>Express Shipping</h6>
-      <p>UK free over £115 · Global via DHL (taxes/duties may apply)</p>
+
+    <div class="product-grid">
+
+      <!-- PRODUCT 1 -->
+      <article class="product-card">
+        <div class="product-img">
+          <!-- swap this image -->
+          <img src="images/aso-adire-set.jpg" alt="ASO-ADIRE Set from Tribe &amp; Trends">
+        </div>
+        <div class="product-tag">Tribe &amp; Trends</div>
+        <div class="product-name">ASO-ADIRE Set</div>
+        <div class="product-note">
+          Structured kimono jacket and tailored trouser in mixed Aso-Oke and Adire print – a nod to tradition with a sharp, modern line.
+        </div>
+        <div class="product-meta">Available in limited sizes · Made to order on request</div>
+        <div class="product-actions">
+          <a class="btn-ghost btn"
+             href="mailto:akongjennifer@gmail.com?subject=Order%20Enquiry%20-%20ASO-ADIRE%20Set&body=Hi%20Jenn,%0D%0A%0DI'd%20love%20to%20order%20the%20ASO-ADIRE%20Set.%0D%0AColourway:%20%0D%0ASize:%20%0D%0AShipping%20city/country:%20%0D%0A%0D%0AThank%20you!">
+             Request by Email
+          </a>
+          <a class="btn-ghost btn"
+             href="https://wa.me/2340000000000?text=Hi%20Jenn,%20I'd%20love%20to%20order%20the%20ASO-ADIRE%20Set%20from%20Tribe%20%26%20Trends.">
+             WhatsApp to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- PRODUCT 2 -->
+      <article class="product-card">
+        <div class="product-img">
+          <img src="images/yanga-skirt.jpg" alt="YANGA Maxi Skirt set from Tribe &amp; Trends">
+        </div>
+        <div class="product-tag">Tribe &amp; Trends</div>
+        <div class="product-name">YANGA Maxi Set</div>
+        <div class="product-note">
+          Flowing maxi skirt and cropped top in bold print, cut to sit high on the waist with a gentle flare through the hem.
+        </div>
+        <div class="product-meta">Perfect for events, shoots and slow Sundays.</div>
+        <div class="product-actions">
+          <a class="btn-ghost btn"
+             href="mailto:akongjennifer@gmail.com?subject=Order%20Enquiry%20-%20YANGA%20Maxi%20Set&body=Hi%20Jenn,%0D%0A%0DI'd%20love%20to%20order%20the%20YANGA%20Maxi%20Set.%0D%0AColourway:%20%0D%0ASize:%20%0D%0AShipping%20city/country:%20%0D%0A%0D%0AThank%20you!">
+             Request by Email
+          </a>
+          <a class="btn-ghost btn"
+             href="https://wa.me/2340000000000?text=Hi%20Jenn,%20I'm%20interested%20in%20the%20YANGA%20Maxi%20Set%20from%20Tribe%20%26%20Trends.">
+             WhatsApp to Order
+          </a>
+        </div>
+      </article>
+
+      <!-- PRODUCT 3 -->
+      <article class="product-card">
+        <div class="product-img">
+          <img src="images/oba-kimono.jpg" alt="OBA Luxe Kimono from Tribe &amp; Trends">
+        </div>
+        <div class="product-tag">Tribe &amp; Trends</div>
+        <div class="product-name">OBA Luxe Kimono</div>
+        <div class="product-note">
+          Long-line kimono with strong shoulders and generous sleeves, finished in statement print or solid with print facings.
+        </div>
+        <div class="product-meta">Throw-on layer · One size with adjustable belt.</div>
+        <div class="product-actions">
+          <a class="btn-ghost btn"
+             href="mailto:akongjennifer@gmail.com?subject=Order%20Enquiry%20-%20OBA%20Luxe%20Kimono&body=Hi%20Jenn,%0D%0A%0DI'd%20love%20to%20order%20the%20OBA%20Luxe%20Kimono.%0D%0AColourway:%20%0D%0ASize:%20(if%20needed)%0D%0AShipping%20city/country:%20%0D%0A%0D%0AThank%20you!">
+             Request by Email
+          </a>
+          <a class="btn-ghost btn"
+             href="https://wa.me/2340000000000?text=Hi%20Jenn,%20I'd%20like%20to%20order%20the%20OBA%20Luxe%20Kimono%20from%20Tribe%20%26%20Trends.">
+             WhatsApp to Order
+          </a>
+        </div>
+      </article>
+
     </div>
-    <div class="strip">
-      <h6>Returns Made Easy</h6>
-      <p>Return or exchange within 14 days</p>
-    </div>
-  </div>
-
-  <!-- PRODUCTS -->
-  <main id="products" class="products">
-    <!-- PRODUCT 1 -->
-    <article class="product-card" data-product="aso-adire">
-      <div class="row g-4 align-items-start">
-        <div class="col-lg-6">
-          <img id="img-aso-adire" src="images/aso-adire/green.jpg" class="thumb" alt="ASO-ADIRE Set">
-        </div>
-        <div class="col-lg-6">
-          <h2 class="product-title">ASO-ADIRE Set</h2>
-          <div class="mb-2 price">£120</div>
-          <p class="fine">Kimono jacket + tailored trouser in heritage weave, re-cut for modern silhouettes.</p>
-
-          <div class="mb-3">
-            <div class="mb-1 small text-uppercase">Colour</div>
-            <button class="swatch active" data-target="aso-adire" data-img="images/aso-adire/green.jpg" data-link="https://buy.stripe.com/placeholder1">Forest</button>
-            <button class="swatch" data-target="aso-adire" data-img="images/aso-adire/gold.jpg" data-link="https://buy.stripe.com/placeholder2">Gold</button>
-          </div>
-
-          <div class="mb-3">
-            <div class="mb-1 small text-uppercase">Size</div>
-            <span class="size-pill active" data-size="S">S</span>
-            <span class="size-pill" data-size="M">M</span>
-            <span class="size-pill" data-size="L">L</span>
-            <span class="size-pill" data-size="XL">XL</span>
-          </div>
-
-          <a id="buy-aso-adire" href="https://buy.stripe.com/placeholder1" class="btn btn-mania">Buy now</a>
-          <p class="fine mt-3">Made to order in Manchester · 7–10 day dispatch.</p>
-        </div>
-      </div>
-    </article>
-
-    <!-- PRODUCT 2 -->
-    <article class="product-card" data-product="yanga-skirt">
-      <div class="row g-4 align-items-start">
-        <div class="col-lg-6 order-lg-2">
-          <img id="img-yanga-skirt" src="images/yanga/ivory.jpg" class="thumb" alt="YANGA Maxi Skirt">
-        </div>
-        <div class="col-lg-6 order-lg-1">
-          <h2 class="product-title">YANGA Maxi Skirt</h2>
-          <div class="mb-2 price">£95</div>
-          <p class="fine">Bias-cut movement with a subtle high-low hem — pairs with crisp shirts or soft knits.</p>
-
-          <div class="mb-3">
-            <div class="mb-1 small text-uppercase">Colour</div>
-            <button class="swatch active" data-target="yanga-skirt" data-img="images/yanga/ivory.jpg" data-link="https://buy.stripe.com/placeholder3">Ivory</button>
-            <button class="swatch" data-target="yanga-skirt" data-img="images/yanga/black.jpg" data-link="https://buy.stripe.com/placeholder4">Black</button>
-          </div>
-
-          <div class="mb-3">
-            <div class="mb-1 small text-uppercase">Size</div>
-            <span class="size-pill active" data-size="6">6</span>
-            <span class="size-pill" data-size="8">8</span>
-            <span class="size-pill" data-size="10">10</span>
-            <span class="size-pill" data-size="12">12</span>
-            <span class="size-pill" data-size="14">14</span>
-          </div>
-
-          <a id="buy-yanga-skirt" href="https://buy.stripe.com/placeholder3" class="btn btn-mania">Buy now</a>
-          <p class="fine mt-3">Ships in 3–5 days from the UK.</p>
-        </div>
-      </div>
-    </article>
-
-    <!-- PRODUCT 3 (optional; remove if you only want two) -->
-    <article class="product-card" data-product="oba-kimono">
-      <div class="row g-4 align-items-start">
-        <div class="col-lg-6">
-          <img id="img-oba-kimono" src="images/oba/emerald.jpg" class="thumb" alt="OBA Luxe Kimono">
-        </div>
-        <div class="col-lg-6">
-          <h2 class="product-title">OBA Luxe Kimono</h2>
-          <div class="mb-2 price">£110</div>
-          <p class="fine">Fluid drape, structured lapel; the throw-on layer that finishes everything.</p>
-
-          <div class="mb-3">
-            <div class="mb-1 small text-uppercase">Colour</div>
-            <button class="swatch active" data-target="oba-kimono" data-img="images/oba/emerald.jpg" data-link="https://buy.stripe.com/placeholder5">Emerald</button>
-            <button class="swatch" data-target="oba-kimono" data-img="images/oba/sand.jpg" data-link="https://buy.stripe.com/placeholder6">Sand</button>
-          </div>
-
-          <div class="mb-3">
-            <div class="mb-1 small text-uppercase">Size</div>
-            <span class="size-pill active" data-size="One">One Size</span>
-          </div>
-
-          <a id="buy-oba-kimono" href="https://buy.stripe.com/placeholder5" class="btn btn-mania">Buy now</a>
-          <p class="fine mt-3">Hand-finished · Limited units this season.</p>
-        </div>
-      </div>
-    </article>
   </main>
 
-  <!-- Newsletter -->
-  <section class="newsletter">
-    <div class="container">
-      <h5 class="mb-3">Sign Up and Save</h5>
-      <p class="text-center text-muted mb-4">Get early access to new releases and exclusive discounts + offers</p>
-      <form class="d-flex justify-content-center gap-2" action="https://formspree.io/f/your-id" method="POST">
-        <input type="email" name="email" class="form-control w-50" placeholder="Your email" required>
-        <button class="btn btn-mania" type="submit">Subscribe</button>
-      </form>
-    </div>
+  <!-- HOW TO SHOP -->
+  <section id="how-to-shop" class="how-to">
+    <h4>How to Shop While Our Store Is Updating</h4>
+    <ol>
+      <li>Browse the Tribe &amp; Trends spotlight pieces above.</li>
+      <li>Click <strong>Request by Email</strong> or <strong>WhatsApp to Order</strong> on the piece you love.</li>
+      <li>Share your preferred size, colourway and shipping city/country.</li>
+      <li>We’ll confirm availability, price and delivery timelines, then send payment details securely.</li>
+    </ol>
+    <p class="small">
+      All pieces are produced in small batches. Once a fabric is finished, it is rarely restocked.
+      This keeps each MANIA by Jennifer garment intentional and special.
+    </p>
   </section>
 
-  <!-- BBX-style link list / policies -->
-  <div class="bottom-links">
-    <div class="row">
-      <div class="col-6 col-md-3">
-        <strong>Brand + Sustainability</strong>
-      </div>
-      <div class="col-6 col-md-3">
-        <a href="#">Contact Us</a>
-        <a href="#">Size Guide</a>
-        <a href="#">Returns + Exchanges</a>
-      </div>
-      <div class="col-6 col-md-3">
-        <a href="#">Shipping</a>
-        <a href="#">FAQs</a>
-        <a href="#">Returns Portal</a>
-      </div>
-      <div class="col-6 col-md-3">
-        <a href="#">Payment Policy</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Klarna</a>
-      </div>
+  <!-- CONTACT / FOOTER -->
+  <footer id="contact">
+    <div class="social">
+      <a href="https://instagram.com/mania.by.jennifer" target="_blank">Instagram</a>
+      <a href="mailto:akongjennifer@gmail.com">Email</a>
     </div>
-    <div class="mt-3">
-      <select class="country-select">
-        <option>United Kingdom (GBP £)</option>
-        <option>United States (USD $)</option>
-        <option>Nigeria (NGN ₦)</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- FOOTER (exactly as requested) -->
-  <footer class="footer-green text-center text-white py-4">
-    <div class="mb-3">
-      <a href="https://instagram.com/jenn.akong" target="_blank" class="footer-icon"><i class="bi bi-instagram"></i></a>
-      <a href="https://linkedin.com/in/jenniferakong1" target="_blank" class="footer-icon"><i class="bi bi-linkedin"></i></a>
-      <a href="https://youtube.com/@jenniferakong1" target="_blank" class="footer-icon"><i class="bi bi-youtube"></i></a>
-    </div>
-    <p class="mb-0">&copy; 2025 Jennifer Akong. All rights reserved.</p>
+    <div>For custom orders and bridal, please email with the subject “Custom MANIA Piece”.</div>
+    <div style="margin-top:6px;">&copy; 2025 MANIA by Jennifer. All rights reserved.</div>
   </footer>
 
-  <!-- JS: colour swatches swap image + checkout link, size toggles -->
-  <script>
-    // Colour swap + buy link
-    document.querySelectorAll('.swatch').forEach(btn=>{
-      btn.addEventListener('click', e=>{
-        const t = e.currentTarget;
-        const target = t.dataset.target;
-        // activate style
-        t.parentElement.querySelectorAll('.swatch').forEach(b=>b.classList.remove('active'));
-        t.classList.add('active');
-        // swap image + link
-        const img = document.getElementById('img-'+target);
-        const buy = document.getElementById('buy-'+target);
-        if(img && t.dataset.img) img.src = t.dataset.img;
-        if(buy && t.dataset.link) buy.href = t.dataset.link;
-      });
-    });
-
-    // Size pills (visual selection only for static checkout links)
-    document.querySelectorAll('.size-pill').forEach(p=>{
-      p.addEventListener('click', e=>{
-        const group = e.currentTarget.parentElement;
-        group.querySelectorAll('.size-pill').forEach(x=>x.classList.remove('active'));
-        e.currentTarget.classList.add('active');
-      });
-    });
-  </script>
 </body>
 </html>
-
-
